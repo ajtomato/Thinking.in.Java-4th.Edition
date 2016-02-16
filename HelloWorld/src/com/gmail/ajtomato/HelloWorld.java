@@ -1,6 +1,7 @@
 package com.gmail.ajtomato;
 
 import java.math.*;
+import java.util.*;
 
 /**
  * The main entry of the whole project.
@@ -48,13 +49,34 @@ public class HelloWorld {
         BigDecimal bd = new BigDecimal("1.12");
         System.out.println("BigDecimal: " + bd.add(new BigDecimal("2.22")));
     }
+    
+    /**
+     * Autoboxing: convert a primitive value (an int, for example) into an
+     *              object of the corresponding wrapper class (Integer).
+     * Unboxing: Converting an object of a wrapper type (Integer) to its
+     *              corresponding primitive (int) value.
+     */
+    private static void autoboxingUnboxing() {
+        // Autoboxing
+        List<Integer> lst = new ArrayList<Integer>();
+        for (int i = 0; i < 10; ++ i) {
+            lst.add(i);
+        }
+        
+        // Unboxing
+        int sum = 0;
+        for (Integer i: lst) {
+            sum += i;
+        }
+        System.out.println("Sum: " + sum);
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        arbitraryPrecision();
+        autoboxingUnboxing();
     }
 
 }
