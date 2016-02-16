@@ -70,13 +70,23 @@ public class HelloWorld {
         }
         System.out.println("Sum: " + sum);
     }
+    
+    /**
+     * Demo how to use Random
+     */
+    private static void random() {
+        Random rand = new Random();
+        System.out.println("Random integer: " + rand.nextInt(100));
+        // Between 0.0 and 1.0
+        System.out.println("Random float: " + rand.nextFloat());
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        autoboxingUnboxing();
+        random();
     }
 
 }
