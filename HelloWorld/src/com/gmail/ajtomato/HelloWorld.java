@@ -16,6 +16,8 @@ public class HelloWorld {
     private static double mD;
     private static boolean mBool;
     private static char mC;
+    
+    int mId;
 
     /**
      * The scope and the default value of primitive types.
@@ -80,13 +82,28 @@ public class HelloWorld {
         // Between 0.0 and 1.0
         System.out.println("Random float: " + rand.nextFloat());
     }
+    
+    /**
+     * == &amp; equals()
+     */
+    private static void equal() {
+        HelloWorld h = new HelloWorld();
+        h.mId = 0;
+        HelloWorld w = h;
+        HelloWorld w1 = new HelloWorld();
+        w1.mId = 0;
+        System.out.println("== means that two references points to one object: "
+                + (h == w));
+        System.out.println("equals() default behavior is the same as ==: "
+                + h.equals(w) + " " + (!h.equals(w1)));
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        random();
+        equal();
     }
 
 }
