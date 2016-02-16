@@ -97,13 +97,24 @@ public class HelloWorld {
         System.out.println("equals() default behavior is the same as ==: "
                 + h.equals(w) + " " + (!h.equals(w1)));
     }
+    
+    /**
+     * HEX & Octal literal and string
+     */
+    private static void hexOctal() {
+        long l1 = 0x99;
+        long l2 = 077;
+        Long l3 = Long.parseLong("1011", 2);
+        System.out.println("HEX, OCTAL, BINARY: " + Long.toHexString(l1)
+                + ", " + Long.toOctalString(l2) + ", " + Long.toBinaryString(l3));
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        equal();
+        hexOctal();
     }
 
 }
