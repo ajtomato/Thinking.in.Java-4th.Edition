@@ -2,6 +2,9 @@ package com.gmail.ajtomato;
 
 import java.math.*;
 
+/**
+ * The main entry of the whole project.
+ */
 public class HelloWorld {
     
     private static byte mB;
@@ -13,6 +16,9 @@ public class HelloWorld {
     private static boolean mBool;
     private static char mC;
 
+    /**
+     * The scope and the default value of primitive types.
+     */
     private static void primitiveTypes() {
         System.out.println("There is no unsigned type");
         System.out.println("byte: " + Byte.MIN_VALUE + " - "+ Byte.MAX_VALUE
@@ -33,6 +39,9 @@ public class HelloWorld {
                 + (int)Character.MAX_VALUE + ", [Default]: " + (int)mC);
     }
     
+    /**
+     * BigInteger &amp; BigDecimal
+     */
     private static void arbitraryPrecision() {
         BigInteger bi = new BigInteger("-1111111111111");
         System.out.println("BigInteger: " + bi.abs());
@@ -40,6 +49,10 @@ public class HelloWorld {
         System.out.println("BigDecimal: " + bd.add(new BigDecimal("2.22")));
     }
 
+    /**
+     * Main entry.
+     * @param args  The arguments of main as the format of a string array.
+     */
     public static void main(String[] args) {
         arbitraryPrecision();
     }
