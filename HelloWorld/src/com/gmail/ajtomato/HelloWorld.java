@@ -1,5 +1,7 @@
 package com.gmail.ajtomato;
 
+import java.math.*;
+
 public class HelloWorld {
     
     private static byte mB;
@@ -30,9 +32,16 @@ public class HelloWorld {
         System.out.println("char: " + (int)Character.MIN_VALUE + " - "
                 + (int)Character.MAX_VALUE + ", [Default]: " + (int)mC);
     }
+    
+    private static void arbitraryPrecision() {
+        BigInteger bi = new BigInteger("-1111111111111");
+        System.out.println("BigInteger: " + bi.abs());
+        BigDecimal bd = new BigDecimal("1.12");
+        System.out.println("BigDecimal: " + bd.add(new BigDecimal("2.22")));
+    }
 
     public static void main(String[] args) {
-    	primitiveTypes();
+        arbitraryPrecision();
     }
 
 }
