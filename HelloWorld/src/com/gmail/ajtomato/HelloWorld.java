@@ -155,13 +155,36 @@ public class HelloWorld {
             }
         }
     }
+    
+    /**
+     * Fibonacci
+     */
+    private static void fibonacci(int n) {
+        if (n < 3) {
+            for (int i = 0; i < n; ++ i) {
+                System.out.println(1);
+            }
+            return;
+        }
+        
+        int a = 1;
+        int b = 1;
+        int c = 0;
+        System.out.println("1\n1");
+        for (n -= 2; n > 0; -- n) {
+            c = a + b;
+            a = b;
+            b = c;
+            System.out.println(c);
+        }
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        label();
+        fibonacci(5);
     }
 
 }
