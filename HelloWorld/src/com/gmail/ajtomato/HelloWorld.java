@@ -108,13 +108,30 @@ public class HelloWorld {
         System.out.println("HEX, OCTAL, BINARY: " + Long.toHexString(l1)
                 + ", " + Long.toOctalString(l2) + ", " + Long.toBinaryString(l3));
     }
+    
+    /**
+     * If you perform any mathematical or bitwise operations on primitive data
+     * types that are smaller than an int (that is, char, byte, or short), those
+     * values will be promoted to int before performing the operations, and the
+     * resulting value will be of type int.
+     */
+    private static void autoPromote() {
+        char c1 = 2;
+        char c2 = 3;
+        char c3 = 0;
+        
+        // char is automatically promoted to int
+        c3 = (char)(c1 + c2);
+        System.out.println("c1 + c2 is promoted to int, so the result has to be"
+                + " casted back to char: " + c3);
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        hexOctal();
+        autoPromote();
     }
 
 }
