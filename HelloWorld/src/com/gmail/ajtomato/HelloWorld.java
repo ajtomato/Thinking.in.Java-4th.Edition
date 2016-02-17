@@ -135,13 +135,33 @@ public class HelloWorld {
             System.out.println(i);
         }
     }
+    
+    /**
+     * Label: the only reason to use labels in Java is when you have nested
+     * loops and you want to break or continue through more than one nested level.
+     */
+    private static void label() {
+        // label
+        outer:
+        for (int i = 0; i < 10; ++ i) {
+            for(int j = 0; j < 10; ++ j) {
+                System.out.println(i + ", " + j);
+                if ((i == 2) && (j == i)) {
+                    continue outer;
+                }
+                if (i == 7) {
+                    break outer;
+                }
+            }
+        }
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        foreach();
+        label();
     }
 
 }
