@@ -125,13 +125,23 @@ public class HelloWorld {
         System.out.println("c1 + c2 is promoted to int, so the result has to be"
                 + " casted back to char: " + c3);
     }
+    
+    /**
+     * Foreach
+     */
+    private static void foreach() {
+        int array[] = {5, 6, 7};
+        for (int i: array) {
+            System.out.println(i);
+        }
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        autoPromote();
+        foreach();
     }
 
 }
