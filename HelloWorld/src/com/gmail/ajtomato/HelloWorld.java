@@ -157,6 +157,15 @@ public class HelloWorld {
     }
     
     /**
+     * Right shift
+     */
+    private static void rightShift() {
+        int i = -1;
+        System.out.println(i >> 3);
+        System.out.println(i >>> 3);
+    }
+    
+    /**
      * Fibonacci
      */
     private static void fibonacci(int n) {
@@ -184,7 +193,7 @@ public class HelloWorld {
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        fibonacci(5);
+        rightShift();
     }
 
 }
