@@ -17,7 +17,19 @@ public class HelloWorld {
     private static boolean mBool;
     private static char mC;
     
-    int mId;
+    int     mId;
+    boolean mRelease = false;
+    
+    /**
+     * finalize() can be used to detect some resources are released as expected.
+     */
+    @Override
+    public void finalize() {
+        if (!mRelease) {
+            System.out.println("mRelease should be set before the object is"
+                    + " destructor.");
+        }
+    }
 
     /**
      * The scope and the default value of primitive types.
@@ -214,13 +226,22 @@ public class HelloWorld {
             }
         }
     }
+    
+    /**
+     * test finalize()
+     */
+    private static void testFinalize() {
+        HelloWorld h = new HelloWorld();
+        h = null;
+        System.gc();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        vampireNumber();
+        testFinalize();
     }
 
 }
