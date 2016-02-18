@@ -187,13 +187,40 @@ public class HelloWorld {
             System.out.println(c);
         }
     }
+    
+    /**
+     * Vampire number
+     */
+    private static void vampireNumber() {
+        for (int i = 10; i < 100; ++ i) {
+            for (int j = 10; j < 100; ++ j) {
+                int m = i * j;
+                if ((m >= 1000) && (m < 10000)) {
+                    ArrayList<Integer> a1 = new ArrayList<Integer>(4);
+                    a1.add(i / 10);
+                    a1.add(i % 10);
+                    a1.add(j / 10);
+                    a1.add(j % 10);
+                    a1.sort(null);
+                    ArrayList<Integer> a2 = new ArrayList<Integer>(4);
+                    for (; m > 0 ; m /= 10) {
+                        a2.add(m % 10);
+                    }
+                    a2.sort(null);
+                    if (a1.equals(a2)) {
+                        System.out.println(i + " * " + j + " = " + (i * j));
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        rightShift();
+        vampireNumber();
     }
 
 }
