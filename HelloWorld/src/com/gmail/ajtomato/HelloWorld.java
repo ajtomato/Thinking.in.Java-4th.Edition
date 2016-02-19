@@ -13,7 +13,14 @@ import java.util.*;
  */
 class Constructor {
     
+    Constructor() {
+        System.out.println("Default constructor");
+    }
+    
     Constructor(int field) {
+        // This must be the first thing.
+        this();
+        
         System.out.println("Constructor: " + mField1 + ", " + mField2 + ", " + mField3);
         mField3 = field;
     }
@@ -295,7 +302,7 @@ public class HelloWorld {
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        foreach();
+        constructorInitialization();
     }
 
 }
