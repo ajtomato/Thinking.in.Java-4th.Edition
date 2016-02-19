@@ -191,7 +191,7 @@ public class HelloWorld {
      * Foreach
      */
     private static void foreach() {
-        int[] array = {5, 6, 7}, array1 = {1, 2, 3};
+        int[] array = {5, 6, 7}, array1 = new int[] {1, 2, 3};
         for (int i: array) {
             System.out.println(i);
         }
@@ -302,7 +302,7 @@ public class HelloWorld {
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        constructorInitialization();
+        foreach();
     }
 
 }
