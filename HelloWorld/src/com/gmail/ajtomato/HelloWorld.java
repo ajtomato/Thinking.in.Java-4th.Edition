@@ -296,13 +296,28 @@ public class HelloWorld {
         Constructor c = new Constructor(10);
         c = null;
     }
+    
+    /**
+     * Variable argument list
+     */
+    private static void variableArgumentLst(String... strings) {
+        for (String s: strings) {
+            System.out.println(s);
+        }
+    }
+    
+    private static void testVariableArgumentLst(String... strings) {
+        variableArgumentLst();
+        variableArgumentLst("Hello", "world");
+        variableArgumentLst(new String[] {"Come", "on"});
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        foreach();
+        testVariableArgumentLst();
     }
 
 }
