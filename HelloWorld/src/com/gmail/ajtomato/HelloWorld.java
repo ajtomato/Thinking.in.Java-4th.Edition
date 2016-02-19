@@ -53,6 +53,14 @@ class Constructor {
 }
 
 /**
+ * Enumerated type
+ */
+enum EnumType {
+    CONST_1,
+    CONST_2
+}
+
+/**
  * The main entry of the whole project.
  */
 public class HelloWorld {
@@ -311,13 +319,22 @@ public class HelloWorld {
         variableArgumentLst("Hello", "world");
         variableArgumentLst(new String[] {"Come", "on"});
     }
+    
+    /**
+     * Enumerated type
+     */
+    private static void enumeratedType() {
+        EnumType e1 = EnumType.CONST_2;
+        System.out.println("Enum: " + e1 + ", " + e1.ordinal() + ", "
+                + Arrays.toString(EnumType.values()));
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        testVariableArgumentLst();
+        enumeratedType();
     }
 
 }
