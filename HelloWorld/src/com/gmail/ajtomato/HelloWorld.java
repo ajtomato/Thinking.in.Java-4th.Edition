@@ -4,6 +4,48 @@ import java.math.*;
 import java.util.*;
 
 /**
+ * Constructor &amp; initialization
+ * 1. static definition
+ * 2. static initializer block
+ * 3. field definition
+ * 4. initializer block
+ * 5. constructor
+ */
+class Constructor {
+    
+    Constructor(int field) {
+        System.out.println("Constructor: " + mField1 + ", " + mField2 + ", " + mField3);
+        mField3 = field;
+    }
+    
+    private int mField1 = 3;
+    private int mField2 = initialize(mField1);
+    private int mField3;
+    
+    // Initializer block
+    {
+        System.out.println("Initializer block: " + mField1 + ", " + mField2 + ", " + mField3);
+    }
+    
+    private int initialize(int field) {
+        System.out.println("field definition");
+        return (field - 1);
+    }
+    
+    private static int sField1 = initializeStatic();
+    
+    private static int initializeStatic() {
+        System.out.println("Static field definition");
+        return 5;
+    }
+    
+    // Static initializer block
+    static {
+        System.out.println("Static initializer block: " + sField1);
+    }
+}
+
+/**
  * The main entry of the whole project.
  */
 public class HelloWorld {
@@ -235,13 +277,21 @@ public class HelloWorld {
         h = null;
         System.gc();
     }
+    
+    /**
+     * Constructor & initialization
+     */
+    private static void constructorInitialization() {
+        Constructor c = new Constructor(10);
+        c = null;
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        testFinalize();
+        constructorInitialization();
     }
 
 }
