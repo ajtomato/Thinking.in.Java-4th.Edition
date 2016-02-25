@@ -61,6 +61,53 @@ enum EnumType {
 }
 
 /**
+ * Base class
+ */
+class Base {
+    
+    private int mField = init();
+    
+    private int init() {
+        System.out.println(mField);
+        return 1;
+    }
+    
+    {
+        System.out.println(mField);
+        mField = 2;
+    }
+    
+    Base(int field) {
+        System.out.println(mField);
+        mField = 3;
+    }
+}
+
+/**
+ * Derived class
+ */
+class Derived extends Base {
+    
+    private int mField1 = init();
+    
+    private int init() {
+        System.out.println(mField1);
+        return 10;
+    }
+    
+    {
+        System.out.println(mField1);
+        mField1 = 11;
+    }
+    
+    Derived(int field) {
+        super(field);
+        System.out.println(mField1);
+        mField1 = 12;
+    }
+}
+
+/**
  * The main entry of the whole project.
  */
 public class HelloWorld {
@@ -328,13 +375,20 @@ public class HelloWorld {
         System.out.println("Enum: " + e1 + ", " + e1.ordinal() + ", "
                 + Arrays.toString(EnumType.values()));
     }
+    
+    /**
+     * Initialize order of base class and derived class
+     */
+    private static void initializeOrder() {
+        Derived d = new Derived(20);
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        enumeratedType();
+        initializeOrder();
     }
 
 }
