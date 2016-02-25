@@ -81,6 +81,10 @@ class Base {
         System.out.println(mField);
         mField = 3;
     }
+    
+    void dispose() {
+        System.out.println("Base.dispose()");
+    }
 }
 
 /**
@@ -104,6 +108,12 @@ class Derived extends Base {
         super(field);
         System.out.println(mField1);
         mField1 = 12;
+    }
+    
+    @Override
+    void dispose() {
+        System.out.println("Derived.dispose()");
+        super.dispose();
     }
 }
 
@@ -382,13 +392,21 @@ public class HelloWorld {
     private static void initializeOrder() {
         Derived d = new Derived(20);
     }
+    
+    /**
+     * Dispose order of base class and derived class
+     */
+    private static void disposeOrder() {
+        Derived d = new Derived(20);
+        d.dispose();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        initializeOrder();
+        disposeOrder();
     }
 
 }
