@@ -85,6 +85,10 @@ class Base {
     void dispose() {
         System.out.println("Base.dispose()");
     }
+    
+    protected void protectedMethod() {
+        System.out.println("Base.protectedMethod");
+    }
 }
 
 /**
@@ -400,13 +404,21 @@ public class HelloWorld {
         Derived d = new Derived(20);
         d.dispose();
     }
+    
+    /**
+     * Protected also provides package access.
+     */
+    private static void protectedAccess() {
+        Base b = new Base(3);
+        b.protectedMethod();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        disposeOrder();
+        protectedAccess();
     }
 
 }
