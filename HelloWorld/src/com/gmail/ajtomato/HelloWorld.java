@@ -412,6 +412,8 @@ public class HelloWorld {
         Base b = new Base(3);
         b.protectedMethod();
     }
+    
+    private static final int CONSTANT_ONE = 1;
 
     /**
      * Main entry.
