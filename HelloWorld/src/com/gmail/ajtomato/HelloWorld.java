@@ -15,6 +15,7 @@ class Constructor {
     
     Constructor() {
         System.out.println("Default constructor");
+        mConstantStr = "Hello world";
     }
     
     Constructor(int field) {
@@ -24,6 +25,8 @@ class Constructor {
         System.out.println("Constructor: " + mField1 + ", " + mField2 + ", " + mField3);
         mField3 = field;
     }
+    
+    private final String mConstantStr;
     
     private int mField1 = 3;
     private int mField2 = initialize(mField1);
