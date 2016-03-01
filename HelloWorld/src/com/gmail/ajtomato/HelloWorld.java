@@ -85,6 +85,19 @@ class Base {
         mField = 3;
     }
     
+    void method1() {
+        System.out.println("Base.method1");
+    }
+    
+    private void method2() {
+        System.out.println("Base.method2");
+    }
+    
+    void method3() {
+        method1();
+        method2();
+    }
+    
     void dispose() {
         System.out.println("Base.dispose()");
     }
@@ -115,6 +128,15 @@ class Derived extends Base {
         super(field);
         System.out.println(mField1);
         mField1 = 12;
+    }
+    
+    @Override
+    void method1() {
+        System.out.println("Derived.method1");
+    }
+    
+    void method2() {
+        System.out.println("Derived.method2");
     }
     
     @Override
@@ -417,13 +439,21 @@ public class HelloWorld {
     }
     
     private static final int CONSTANT_ONE = 1;
+    
+    /**
+     * dynamic bind
+     */
+    private static void dynamicBind() {
+        Derived d = new Derived(3);
+        d.method3();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        protectedAccess();
+        dynamicBind();
     }
 
 }
