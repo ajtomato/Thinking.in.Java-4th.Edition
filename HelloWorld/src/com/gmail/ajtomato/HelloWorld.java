@@ -105,6 +105,10 @@ class Base {
     protected void protectedMethod() {
         System.out.println("Base.protectedMethod");
     }
+    
+    static void staticMethod() {
+        System.out.println("Base.staticMethod");
+    }
 }
 
 /**
@@ -143,6 +147,10 @@ class Derived extends Base {
     void dispose() {
         System.out.println("Derived.dispose()");
         super.dispose();
+    }
+    
+    static void staticMethod() {
+        System.out.println("Derived.staticMethod");
     }
 }
 
@@ -447,13 +455,23 @@ public class HelloWorld {
         Derived d = new Derived(3);
         d.method3();
     }
+    
+    /**
+     * static method does not dynamic bind
+     */
+    private static void staticMethodNotDynamic() {
+        Derived d = new Derived(3);
+        Base b = d;
+        d.staticMethod();
+        b.staticMethod();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        dynamicBind();
+        staticMethodNotDynamic();
     }
 
 }
