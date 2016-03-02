@@ -164,6 +164,33 @@ class Derived extends Base {
 }
 
 /**
+ * Abstract class
+ */
+abstract class AbstractClass {
+    
+    AbstractClass() {
+        System.out.println("AbstractClass.AbstractClass");
+    }
+    
+    void method1() {
+        System.out.println("AbstractClass.method1");
+    }
+    
+    abstract void method2();
+}
+
+/**
+ * Concrete class
+ */
+class ConcreteClass extends AbstractClass {
+    
+    @Override
+    void method2() {
+        System.out.println("ConcreteClass.method2");
+    }
+}
+
+/**
  * The main entry of the whole project.
  */
 public class HelloWorld {
@@ -482,13 +509,21 @@ public class HelloWorld {
         Derived d = new Derived(3);
         d.method4();
     }
+    
+    /**
+     * Abstract class
+     */
+    private static void abstractClass() {
+        AbstractClass a = new ConcreteClass();
+        a.method2();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        covariantReturnType();
+        abstractClass();
     }
 
 }
