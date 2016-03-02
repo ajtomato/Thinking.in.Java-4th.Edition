@@ -180,13 +180,33 @@ abstract class AbstractClass {
 }
 
 /**
+ * Interface
+ */
+interface Interface {
+    
+    // static & final
+    int VALUE_C = 5;
+    
+    void method3();
+}
+
+/**
  * Concrete class
  */
-class ConcreteClass extends AbstractClass {
+class ConcreteClass extends AbstractClass
+        implements Interface {
     
     @Override
     void method2() {
         System.out.println("ConcreteClass.method2");
+    }
+    
+    /**
+     * The method in an interface is public.
+     */
+    @Override
+    public void method3() {
+        System.out.println("ConcreteClass.method3");
     }
 }
 
@@ -517,13 +537,21 @@ public class HelloWorld {
         AbstractClass a = new ConcreteClass();
         a.method2();
     }
+    
+    /**
+     * Interface
+     */
+    private static void implmentInterface() {
+        Interface i = new ConcreteClass();
+        i.method3();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        abstractClass();
+        implmentInterface();
     }
 
 }
