@@ -98,6 +98,10 @@ class Base {
         method2();
     }
     
+    Base method4() {
+        return this;
+    }
+    
     void dispose() {
         System.out.println("Base.dispose()");
     }
@@ -141,6 +145,11 @@ class Derived extends Base {
     
     void method2() {
         System.out.println("Derived.method2");
+    }
+    
+    @Override
+    Derived method4() {
+        return this;
     }
     
     @Override
@@ -465,13 +474,21 @@ public class HelloWorld {
         d.staticMethod();
         b.staticMethod();
     }
+    
+    /**
+     * Covariant return type
+     */
+    private static void covariantReturnType() {
+        Derived d = new Derived(3);
+        d.method4();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        staticMethodNotDynamic();
+        covariantReturnType();
     }
 
 }
