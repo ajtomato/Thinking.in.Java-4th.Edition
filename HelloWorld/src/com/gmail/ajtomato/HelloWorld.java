@@ -190,6 +190,18 @@ interface Interface {
     void method3();
 }
 
+interface Interface1 {
+    void method4();
+}
+
+interface Interface2 {
+    void method5();
+}
+
+interface Interface3 extends Interface1, Interface2 {
+    void method6();
+}
+
 /**
  * Concrete class
  */
