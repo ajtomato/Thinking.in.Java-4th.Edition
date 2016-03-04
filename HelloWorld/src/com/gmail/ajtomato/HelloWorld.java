@@ -223,6 +223,23 @@ class ConcreteClass extends AbstractClass
 }
 
 /**
+ * OuterClass & InnerClass
+ */
+class OuterClass {
+    
+    class InnerClass {
+        
+        OuterClass getOuter() {
+            System.out.println(mOuterField);
+            return OuterClass.this;
+        }
+        
+    }
+    
+    private int mOuterField = 3;
+}
+
+/**
  * The main entry of the whole project.
  */
 public class HelloWorld {
@@ -557,13 +574,23 @@ public class HelloWorld {
         Interface i = new ConcreteClass();
         i.method3();
     }
+    
+    /**
+     * Create outer class and inner class.
+     */
+    private static void createOuterClassInnerClass() {
+        OuterClass o = new OuterClass();
+        OuterClass.InnerClass i = o.new InnerClass();
+        o = i.getOuter();
+        System.out.println("Done");
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        implmentInterface();
+        createOuterClassInnerClass();
     }
 
 }
