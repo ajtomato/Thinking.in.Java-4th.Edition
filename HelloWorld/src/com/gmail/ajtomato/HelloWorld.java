@@ -236,6 +236,29 @@ class OuterClass {
         
     }
     
+    Interface getInterface() {
+        return new Interface() {
+            @Override
+            public void method3() {
+                System.out.println("Anonymous Class in OuterClass for Interface");
+            }
+        };
+    }
+    
+    Base getBase(int field, String s) {
+        return new Base(field) {
+            {
+                System.out.println("Anonymous class instance initializer: " + s);
+            }
+            
+            @Override
+            void method1() {
+                System.out.println("Anonymous class in OuterClass for Base: "
+                        + s);
+            }
+        };
+    }
+    
     private int mOuterField = 3;
 }
 
@@ -584,13 +607,24 @@ public class HelloWorld {
         o = i.getOuter();
         System.out.println("Done");
     }
+    
+    /**
+     * Anonymous class
+     */
+    private static void anonymousClass() {
+        OuterClass o = new OuterClass();
+        Interface i = o.getInterface();
+        i.method3();
+        Base b = o.getBase(5, "Hello");
+        b.method1();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        createOuterClassInnerClass();
+        anonymousClass();
     }
 
 }
