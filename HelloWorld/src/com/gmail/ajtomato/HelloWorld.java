@@ -26,6 +26,8 @@ class Constructor {
         mField3 = field;
     }
     
+    
+    @SuppressWarnings("unused")
     private final String mConstantStr;
     
     private int mField1 = 3;
@@ -293,6 +295,7 @@ public class HelloWorld {
     /**
      * The scope and the default value of primitive types.
      */
+    @SuppressWarnings("unused")
     private static void primitiveTypes() {
         System.out.println("There is no unsigned type");
         System.out.println("byte: " + Byte.MIN_VALUE + " - "+ Byte.MAX_VALUE
@@ -316,6 +319,7 @@ public class HelloWorld {
     /**
      * BigInteger &amp; BigDecimal
      */
+    @SuppressWarnings("unused")
     private static void arbitraryPrecision() {
         BigInteger bi = new BigInteger("-1111111111111");
         System.out.println("BigInteger: " + bi.abs());
@@ -329,6 +333,7 @@ public class HelloWorld {
      * Unboxing: Converting an object of a wrapper type (Integer) to its
      *              corresponding primitive (int) value.
      */
+    @SuppressWarnings("unused")
     private static void autoboxingUnboxing() {
         // Autoboxing
         List<Integer> lst = new ArrayList<Integer>();
@@ -347,6 +352,7 @@ public class HelloWorld {
     /**
      * Demo how to use Random
      */
+    @SuppressWarnings("unused")
     private static void random() {
         Random rand = new Random();
         System.out.println("Random integer: " + rand.nextInt(100));
@@ -357,6 +363,7 @@ public class HelloWorld {
     /**
      * == &amp; equals()
      */
+    @SuppressWarnings("unused")
     private static void equal() {
         HelloWorld h = new HelloWorld();
         h.mId = 0;
@@ -372,6 +379,7 @@ public class HelloWorld {
     /**
      * HEX & Octal literal and string
      */
+    @SuppressWarnings("unused")
     private static void hexOctal() {
         long l1 = 0x99;
         long l2 = 077;
@@ -386,6 +394,7 @@ public class HelloWorld {
      * values will be promoted to int before performing the operations, and the
      * resulting value will be of type int.
      */
+    @SuppressWarnings("unused")
     private static void autoPromote() {
         char c1 = 2;
         char c2 = 3;
@@ -400,6 +409,7 @@ public class HelloWorld {
     /**
      * Foreach
      */
+    @SuppressWarnings("unused")
     private static void foreach() {
         int[] array = {5, 6, 7}, array1 = new int[] {1, 2, 3};
         for (int i: array) {
@@ -415,6 +425,7 @@ public class HelloWorld {
      * Label: the only reason to use labels in Java is when you have nested
      * loops and you want to break or continue through more than one nested level.
      */
+    @SuppressWarnings("unused")
     private static void label() {
         // label
         outer:
@@ -434,6 +445,7 @@ public class HelloWorld {
     /**
      * Right shift
      */
+    @SuppressWarnings("unused")
     private static void rightShift() {
         int i = -1;
         System.out.println(i >> 3);
@@ -443,6 +455,7 @@ public class HelloWorld {
     /**
      * Fibonacci
      */
+    @SuppressWarnings("unused")
     private static void fibonacci(int n) {
         if (n < 3) {
             for (int i = 0; i < n; ++ i) {
@@ -466,6 +479,7 @@ public class HelloWorld {
     /**
      * Vampire number
      */
+    @SuppressWarnings("unused")
     private static void vampireNumber() {
         for (int i = 10; i < 100; ++ i) {
             for (int j = 10; j < 100; ++ j) {
@@ -493,6 +507,7 @@ public class HelloWorld {
     /**
      * test finalize()
      */
+    @SuppressWarnings("unused")
     private static void testFinalize() {
         HelloWorld h = new HelloWorld();
         h = null;
@@ -502,6 +517,7 @@ public class HelloWorld {
     /**
      * Constructor & initialization
      */
+    @SuppressWarnings("unused")
     private static void constructorInitialization() {
         Constructor c = new Constructor(10);
         c = null;
@@ -516,6 +532,7 @@ public class HelloWorld {
         }
     }
     
+    @SuppressWarnings("unused")
     private static void testVariableArgumentLst(String... strings) {
         variableArgumentLst();
         variableArgumentLst("Hello", "world");
@@ -525,6 +542,7 @@ public class HelloWorld {
     /**
      * Enumerated type
      */
+    @SuppressWarnings("unused")
     private static void enumeratedType() {
         EnumType e1 = EnumType.CONST_2;
         System.out.println("Enum: " + e1 + ", " + e1.ordinal() + ", "
@@ -534,6 +552,7 @@ public class HelloWorld {
     /**
      * Initialize order of base class and derived class
      */
+    @SuppressWarnings("unused")
     private static void initializeOrder() {
         Derived d = new Derived(20);
     }
@@ -541,6 +560,7 @@ public class HelloWorld {
     /**
      * Dispose order of base class and derived class
      */
+    @SuppressWarnings("unused")
     private static void disposeOrder() {
         Derived d = new Derived(20);
         d.dispose();
@@ -549,16 +569,19 @@ public class HelloWorld {
     /**
      * Protected also provides package access.
      */
+    @SuppressWarnings("unused")
     private static void protectedAccess() {
         Base b = new Base(3);
         b.protectedMethod();
     }
     
+    @SuppressWarnings("unused")
     private static final int CONSTANT_ONE = 1;
     
     /**
      * dynamic bind
      */
+    @SuppressWarnings("unused")
     private static void dynamicBind() {
         Derived d = new Derived(3);
         d.method3();
@@ -567,6 +590,7 @@ public class HelloWorld {
     /**
      * static method does not dynamic bind
      */
+    @SuppressWarnings({ "unused", "static-access" })
     private static void staticMethodNotDynamic() {
         Derived d = new Derived(3);
         Base b = d;
@@ -577,6 +601,7 @@ public class HelloWorld {
     /**
      * Covariant return type
      */
+    @SuppressWarnings("unused")
     private static void covariantReturnType() {
         Derived d = new Derived(3);
         d.method4();
@@ -585,6 +610,7 @@ public class HelloWorld {
     /**
      * Abstract class
      */
+    @SuppressWarnings("unused")
     private static void abstractClass() {
         AbstractClass a = new ConcreteClass();
         a.method2();
@@ -593,6 +619,7 @@ public class HelloWorld {
     /**
      * Interface
      */
+    @SuppressWarnings("unused")
     private static void implmentInterface() {
         Interface i = new ConcreteClass();
         i.method3();
@@ -601,6 +628,7 @@ public class HelloWorld {
     /**
      * Create outer class and inner class.
      */
+    @SuppressWarnings("unused")
     private static void createOuterClassInnerClass() {
         OuterClass o = new OuterClass();
         OuterClass.InnerClass i = o.new InnerClass();
