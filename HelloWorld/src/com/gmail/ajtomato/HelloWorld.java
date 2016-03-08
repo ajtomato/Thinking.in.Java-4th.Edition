@@ -639,6 +639,7 @@ public class HelloWorld {
     /**
      * Anonymous class
      */
+    @SuppressWarnings("unused")
     private static void anonymousClass() {
         OuterClass o = new OuterClass();
         Interface i = o.getInterface();
@@ -646,13 +647,27 @@ public class HelloWorld {
         Base b = o.getBase(5, "Hello");
         b.method1();
     }
+    
+    /**
+     * ArrayList
+     */
+    private static void arrayList() {
+        // Make an object of a concrete class, upcast it to the corresponding
+        // interface, and then use the interface throughout the rest of your code.
+        List<Base> lst = new ArrayList<Base>();
+        lst.add(new Base(1));
+        lst.add(new Base(3));
+        for (Base c: lst) {
+            System.out.println(c);
+        }
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        anonymousClass();
+        arrayList();
     }
 
 }
