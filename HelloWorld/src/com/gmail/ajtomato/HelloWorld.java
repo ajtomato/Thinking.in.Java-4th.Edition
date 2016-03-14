@@ -84,7 +84,7 @@ class Base {
     
     Base(int field) {
         System.out.println(mField);
-        mField = 3;
+        mField = field;
     }
     
     void method1() {
@@ -102,6 +102,10 @@ class Base {
     
     Base method4() {
         return this;
+    }
+    
+    int getField() {
+        return mField;
     }
     
     void dispose() {
@@ -659,6 +663,11 @@ public class HelloWorld {
         lst.add(new Base(3));
         for (Base c: lst) {
             System.out.println(c);
+        }
+        
+        Iterator<Base> i = lst.iterator();
+        while (i.hasNext()) {
+            System.out.println(i.next().getField());
         }
     }
 
