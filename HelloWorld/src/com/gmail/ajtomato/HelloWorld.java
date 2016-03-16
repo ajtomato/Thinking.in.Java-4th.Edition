@@ -2,6 +2,7 @@ package com.gmail.ajtomato;
 
 import java.math.*;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * Constructor &amp; initialization
@@ -266,6 +267,24 @@ class OuterClass {
     }
     
     private int mOuterField = 3;
+}
+
+@SuppressWarnings("serial")
+class LoggingException extends Exception {
+    
+    private static Logger logger = Logger.getLogger("LoggingException");
+    
+    LoggingException() {
+        java.io.StringWriter trace = new java.io.StringWriter();
+        printStackTrace(new java.io.PrintWriter(trace));
+        logger.severe("Stack Trace:\n" + trace.toString());
+    }
+    
+    @Override
+    public String getMessage() {
+        return "LoggingException";
+    }
+    
 }
 
 /**
@@ -655,6 +674,7 @@ public class HelloWorld {
     /**
      * ArrayList
      */
+    @SuppressWarnings("unused")
     private static void arrayList() {
         // Make an object of a concrete class, upcast it to the corresponding
         // interface, and then use the interface throughout the rest of your code.
@@ -670,13 +690,24 @@ public class HelloWorld {
             System.out.println(i.next().getField());
         }
     }
+    
+    /**
+     * Logging & Exception
+     */
+    private static void loggingException() {
+        try {
+            throw new LoggingException();
+        } catch (LoggingException e) {
+            System.err.println("Catch an exception: " + e);
+        }
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        arrayList();
+        loggingException();
     }
 
 }
