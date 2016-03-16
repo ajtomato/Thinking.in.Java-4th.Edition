@@ -694,11 +694,24 @@ public class HelloWorld {
     /**
      * Logging & Exception
      */
+    @SuppressWarnings("unused")
     private static void loggingException() {
         try {
             throw new LoggingException();
         } catch (LoggingException e) {
             System.err.println("Catch an exception: " + e);
+        }
+    }
+    
+    /**
+     * finally will be called, even the method is returned before finally
+     */
+    private static void testFinally() {
+        try {
+            System.out.println("try is executed");
+            return;
+        } finally {
+            System.out.println("finally is executed");
         }
     }
 
@@ -707,7 +720,7 @@ public class HelloWorld {
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        loggingException();
+        testFinally();
     }
 
 }
