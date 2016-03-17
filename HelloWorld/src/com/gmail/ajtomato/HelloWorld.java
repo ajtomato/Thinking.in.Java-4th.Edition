@@ -706,6 +706,7 @@ public class HelloWorld {
     /**
      * finally will be called, even the method is returned before finally
      */
+    @SuppressWarnings("unused")
     private static void testFinally() {
         try {
             System.out.println("try is executed");
@@ -714,13 +715,30 @@ public class HelloWorld {
             System.out.println("finally is executed");
         }
     }
+    
+    /**
+     * Cleanup with try-finally: right after you create an object that requires
+     * cleanup, begin a try-finally.
+     */
+    private static void cleanup() {
+        try {
+            Base b = new Base(3);
+            try {
+                System.out.println("Run");
+            } finally {
+                b.dispose();
+            }
+        } catch(Exception e) {
+            System.out.println("Handle the exception from Constructor");
+        }
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        testFinally();
+        cleanup();
     }
 
 }
