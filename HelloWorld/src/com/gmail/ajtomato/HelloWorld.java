@@ -724,7 +724,8 @@ public class HelloWorld {
         try {
             Base b = new Base(3);
             try {
-                System.out.println("Run");
+                String s = String.format("Hello %d", 20);
+                System.out.printf("Run: %x, %s\n", 15, s);
             } finally {
                 b.dispose();
             }
