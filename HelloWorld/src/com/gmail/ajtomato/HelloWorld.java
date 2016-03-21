@@ -740,10 +740,25 @@ public class HelloWorld {
     /**
      * Regular expression
      */
+    @SuppressWarnings("unused")
     private static void regularExpression() {
         Pattern p = Pattern.compile("[a-z]+");
         Matcher m = p.matcher("0ab");
         System.out.println(m.matches());
+    }
+    
+    /**
+     * Scanner
+     */
+    private static void scanner() {
+        String input = "1, 2, red, blue";
+        Scanner s = new Scanner(input);
+        s.useDelimiter("\\s*, \\s*");
+        System.out.println(s.nextInt());
+        System.out.println(s.nextInt());
+        System.out.println(s.next());
+        System.out.println(s.next());
+        s.close();
     }
 
     /**
@@ -751,7 +766,7 @@ public class HelloWorld {
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        regularExpression();
+        scanner();
     }
 
 }
