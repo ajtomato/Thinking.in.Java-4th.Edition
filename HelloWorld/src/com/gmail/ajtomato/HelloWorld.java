@@ -3,6 +3,8 @@ package com.gmail.ajtomato;
 import java.math.*;
 import java.util.*;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Constructor &amp; initialization
@@ -720,6 +722,7 @@ public class HelloWorld {
      * Cleanup with try-finally: right after you create an object that requires
      * cleanup, begin a try-finally.
      */
+    @SuppressWarnings("unused")
     private static void cleanup() {
         try {
             Base b = new Base(3);
@@ -733,13 +736,22 @@ public class HelloWorld {
             System.out.println("Handle the exception from Constructor");
         }
     }
+    
+    /**
+     * Regular expression
+     */
+    private static void regularExpression() {
+        Pattern p = Pattern.compile("[a-z]+");
+        Matcher m = p.matcher("0ab");
+        System.out.println(m.matches());
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        cleanup();
+        regularExpression();
     }
 
 }
