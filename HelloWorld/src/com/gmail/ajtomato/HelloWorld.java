@@ -750,6 +750,7 @@ public class HelloWorld {
     /**
      * Scanner
      */
+    @SuppressWarnings("unused")
     private static void scanner() {
         String input = "1, 2, red, blue";
         Scanner s = new Scanner(input);
@@ -760,13 +761,34 @@ public class HelloWorld {
         System.out.println(s.next());
         s.close();
     }
+    
+    /**
+     * StringBuilder
+     */
+    @SuppressWarnings("unused")
+    private static void stringBuilder() {
+        StringBuilder s = new StringBuilder(100);
+        s.append("Hello ");
+        s.append("world");
+        System.out.println(s);
+    }
+    
+    /**
+     * Formatter & String.format
+     */
+    private static void formatter() {
+        Formatter f = new Formatter();
+        f.format("Hello world: %x\n", 15);
+        System.out.println(f + String.format("Hello world: %x", 14));
+        f.close();
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        scanner();
+        formatter();
     }
 
 }
