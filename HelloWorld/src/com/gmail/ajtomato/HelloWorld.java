@@ -1,5 +1,8 @@
 package com.gmail.ajtomato;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.*;
 import java.util.*;
 import java.util.logging.Logger;
@@ -42,9 +45,14 @@ class Constructor {
         System.out.println("Initializer block: " + mField1 + ", " + mField2 + ", " + mField3);
     }
     
-    private int initialize(int field) {
+    public int initialize(int field) {
         System.out.println("field definition");
         return (field - 1);
+    }
+    
+    @SuppressWarnings("unused")
+    private void privateMethod(String s, int i) {
+        System.out.printf("Constructor.privateMethod: %s, %d, %d\n", s, i, mField1);
     }
     
     private static int sField1 = initializeStatic();
@@ -776,11 +784,66 @@ public class HelloWorld {
     /**
      * Formatter & String.format
      */
+    @SuppressWarnings("unused")
     private static void formatter() {
         Formatter f = new Formatter();
         f.format("Hello world: %x\n", 15);
         System.out.println(f + String.format("Hello world: %x", 14));
         f.close();
+    }
+    
+    /**
+     * Reflection
+     */
+    private static void reflection() {
+        Class<?> c = null;
+        try {
+            c = Class.forName("com.gmail.ajtomato.Constructor");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Object o = null;
+        try {
+            if (c != null) {
+                o = c.newInstance();
+            }
+            Method m = c.getMethod("initialize", int.class);
+            m.invoke(o, 3);
+            
+            // For private methods
+            m = c.getDeclaredMethod("privateMethod", String.class, int.class);
+            m.setAccessible(true);
+            m.invoke(o, "Hello", 7);
+            
+            // For private field
+            Field f = c.getDeclaredField("mField1");
+            f.setAccessible(true);
+            System.out.println("Reflection.getField: " + f.getInt(o));
+            f.setInt(o, 9);
+            m.invoke(o, "Hello", 5);
+        } catch (InstantiationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -788,7 +851,7 @@ public class HelloWorld {
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        formatter();
+        reflection();
     }
 
 }
