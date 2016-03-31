@@ -298,6 +298,22 @@ class LoggingException extends Exception {
 }
 
 /**
+ * Tuple
+ */
+class TwoTuple<A, B> {
+    public final A first;
+    public final B second;
+    public TwoTuple(A a, B b) {
+        first = a;
+        second = b;
+    }
+    @Override
+    public String toString() {
+        return ("<first: " + first + ", second: " + second + ">");
+    }
+}
+
+/**
  * The main entry of the whole project.
  */
 public class HelloWorld {
@@ -795,6 +811,7 @@ public class HelloWorld {
     /**
      * Reflection
      */
+    @SuppressWarnings("unused")
     private static void reflection() {
         Class<?> c = null;
         try {
@@ -845,13 +862,24 @@ public class HelloWorld {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Tuple
+     */
+    private static TwoTuple<String, Integer> getTuple() {
+        return new TwoTuple<String, Integer>("Hello" , 9);
+    }
+    
+    private static void tuple() {
+        System.out.println(getTuple());
+    }
 
     /**
      * Main entry.
      * @param args  The arguments of main as the format of a string array.
      */
     public static void main(String[] args) {
-        reflection();
+        tuple();
     }
 
 }
